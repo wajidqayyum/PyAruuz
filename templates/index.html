@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عروض - اردو تقطیع</title>
+    <!-- Modern Urdu Font: Jameel Noori Nastaleeq for Poetry, Noto Sans Arabic for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #334155;
+            --primary: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --secondary: #38bdf8;
+            --accent: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans Arabic', sans-serif;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 4rem;
+            color: transparent;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            color: var(--text-main);
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 1.8rem;
+            line-height: 2.2;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn i {
+            font-size: 1.1em;
+        }
+
+        /* Results Section */
+        #results {
+            display: none;
+        }
+
+        .dominant-meter-banner {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(56, 189, 248, 0.2));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .dominant-meter-banner h2 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .dominant-meter-name {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 2.2rem;
+            color: var(--text-main);
+        }
+
+        .line-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .line-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .line-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .meter-name {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .distance-badge {
+            background: var(--surface-hover);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dist-0 { color: var(--success); }
+        .dist-low { color: var(--warning); }
+        .dist-high { color: var(--accent); }
+
+        .scansion-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .grid-row {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .grid-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .feet-name {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: rgba(139, 92, 246, 0.1);
+            padding: 0.5rem;
+            border-radius: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .word-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .code-text {
+            font-family: monospace;
+            font-size: 1.4rem;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.3);
+            padding: 0.3rem 0;
+            border-radius: 0.3rem;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--border);
+            border-bottom-color: var(--primary);
+            border-radius: 50%;
+            margin: 3rem auto;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+        }
+        
+        .error-msg {
+            color: var(--accent);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>عروض</h1>
+            <p class="subtitle">جدید اور تیز ترین اردو تقطیع انجن</p>
+        </header>
+
+        <main>
+            <div class="glass-panel">
+                <div class="input-group">
+                    <textarea id="ghazal-input" placeholder="اپنی غزل یہاں پیسٹ کریں...&#10;&#10;مثال کے طور پر:&#10;ٹھیک ہے میں نہیں پسند اُنہیں&#10;لیکن اس درجہ پائمال پسند" spellcheck="false"></textarea>
+                </div>
+                <button class="btn" id="scan-btn" onclick="scanPoem()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    تقطیع کریں
+                </button>
+                <div id="error-message" class="error-msg"></div>
+            </div>
+
+            <div class="loader" id="loader"></div>
+
+            <div id="results">
+                <div class="dominant-meter-banner" id="dominant-meter-banner">
+                    <h2>غزل کی بحر</h2>
+                    <div class="dominant-meter-name" id="dominant-meter-name"></div>
+                </div>
+                
+                <div id="lines-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        async function scanPoem() {
+            const text = document.getElementById('ghazal-input').value.trim();
+            const btn = document.getElementById('scan-btn');
+            const loader = document.getElementById('loader');
+            const resultsDiv = document.getElementById('results');
+            const linesContainer = document.getElementById('lines-container');
+            const errorMsg = document.getElementById('error-message');
+            const banner = document.getElementById('dominant-meter-banner');
+            const bannerName = document.getElementById('dominant-meter-name');
+
+            if (!text) {
+                errorMsg.innerText = "براہ کرم کچھ متن درج کریں۔";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            errorMsg.style.display = "none";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+            resultsDiv.style.display = "none";
+            loader.style.display = "block";
+            linesContainer.innerHTML = '';
+
+            try {
+                const response = await fetch('/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if(data.dominant_meter) {
+                        bannerName.innerText = data.dominant_meter;
+                        banner.style.display = "block";
+                    } else {
+                        banner.style.display = "none";
+                    }
+
+                    if (data.lines && data.lines.length > 0) {
+                        data.lines.forEach((line, index) => {
+                            linesContainer.appendChild(createLineCard(line));
+                        });
+                        resultsDiv.style.display = "block";
+                        resultsDiv.style.animation = "fadeInUp 0.8s ease-out";
+                    } else {
+                        linesContainer.innerHTML = '<div class="empty-state">کوئی نتیجہ نہیں ملا۔</div>';
+                        resultsDiv.style.display = "block";
+                    }
+                } else {
+                    throw new Error(data.error || "نامعلوم خامی");
+                }
+            } catch (err) {
+                errorMsg.innerText = "خامی: " + err.message;
+                errorMsg.style.display = "block";
+            } finally {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                loader.style.display = "none";
+            }
+        }
+
+        function createLineCard(lineData) {
+            const card = document.createElement('div');
+            card.className = 'line-card';
+            
+            // Format distance badge
+            let distClass = 'dist-high';
+            let icon = 'fa-triangle-exclamation';
+            if (lineData.distance === 0) {
+                distClass = 'dist-0';
+                icon = 'fa-check-circle';
+            } else if (lineData.distance <= 2) {
+                distClass = 'dist-low';
+                icon = 'fa-info-circle';
+            }
+            
+            // Build the top header
+            card.innerHTML = `
+                <div class="line-header">
+                    <div class="meter-name">${lineData.meter_name || "نامعلوم بحر"}</div>
+                    <div class="distance-badge ${distClass}">
+                        <i class="fa-solid ${icon}"></i>
+                        فاصلہ: ${lineData.distance == 99 ? '∞' : lineData.distance}
+                    </div>
+                </div>
+            `;
+            
+            // Build the grid
+            // C# style:
+            // 1. Feet names
+            // 2. Words
+            // 3. Codes
+            
+            const grid = document.createElement('div');
+            grid.className = 'scansion-grid';
+            
+            // Row 1: Feet Names
+            if (lineData.feet_names && lineData.feet_names.length > 0) {
+                const feetRow = document.createElement('div');
+                feetRow.className = 'grid-row';
+                lineData.feet_names.forEach(f => {
+                    feetRow.innerHTML += `<div class="grid-item"><div class="feet-name">${f}</div></div>`;
+                });
+                grid.appendChild(feetRow);
+            }
+            
+            // Row 2 & 3: Words mapped to Codes
+            // Since we might have more words than feet (or vice versa), 
+            // for the C# exact look, we just display them aligned if possible, 
+            // otherwise evenly spaced.
+            const wordRow = document.createElement('div');
+            wordRow.className = 'grid-row';
+            
+            // We'll reverse the array for display because it's RTL but flex row might render LTR depending on browser flex logic with RTL
+            // Actually, CSS flex with RTL naturally flows right to left.
+            
+            lineData.words.forEach((w, i) => {
+                const c = lineData.codes[i] || "?";
+                wordRow.innerHTML += `
+                    <div class="grid-item">
+                        <div class="word-text">${w}</div>
+                        <div class="code-text">${c}</div>
+                    </div>
+                `;
+            });
+            
+            grid.appendChild(wordRow);
+            card.appendChild(grid);
+            
+            return card;
+        }
+    </script>
+</body>
+</html>
