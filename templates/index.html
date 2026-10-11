@@ -3,24 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عروض - اردو تقطیع</title>
-    <!-- Modern Urdu Font: Jameel Noori Nastaleeq for Poetry, Noto Sans Arabic for UI -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>تقطیع | PyAruuz — جدید اردو تقطیع انجن</title>
+    <!-- Fonts: Noto Nastaliq Urdu for Poetry, Noto Sans Arabic for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-color: #0f172a;
-            --surface: #1e293b;
-            --surface-hover: #334155;
-            --primary: #8b5cf6;
-            --primary-hover: #7c3aed;
-            --secondary: #38bdf8;
-            --accent: #f43f5e;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --success: #10b981;
-            --warning: #f59e0b;
+            --bg-page: #FBF9F5;
+            --bg-surface: #FFFFFF;
+            --bg-subtle: #F5EFEB;
+            --border-color: #E6DFD5;
+            --border-dashed: #CFBEA9;
+            
+            --primary: #94361E;
+            --primary-hover: #7A2B16;
+            --primary-soft: #F9EFEA;
+            
+            --text-main: #2C2825;
+            --text-muted: #6B655D;
+            --text-light: #8E867C;
+            
+            --success-bg: #EAF6ED;
+            --success-text: #1B7330;
+            --success-border: #C5E6CD;
+            
+            --danger-bg: #FDECEC;
+            --danger-text: #BA2828;
+            --danger-border: #F8C7C7;
+            
+            --warning-bg: #FFF8EE;
+            --warning-text: #B25E00;
+            --warning-border: #FADBB2;
+            
+            --font-ui: 'Noto Sans Arabic', sans-serif;
+            --font-poetry: 'Noto Nastaliq Urdu', serif;
         }
 
         * {
@@ -30,442 +47,1408 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-page);
             color: var(--text-main);
-            font-family: 'Noto Sans Arabic', sans-serif;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%);
-            background-attachment: fixed;
+            font-family: var(--font-ui);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
+        /* Top Announcement Banner */
+        .announcement-bar {
+            background: #F7EAE5;
+            border-bottom: 1px solid #ECD7D0;
+            padding: 0.5rem 1rem;
             text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeInDown 0.8s ease-out;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        .announcement-bar a {
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .announcement-bar a:hover {
+            background: var(--primary-hover);
         }
 
-        h1 {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 4rem;
-            color: transparent;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+        /* Navigation Header */
+        header {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-badge {
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-poetry);
+            font-size: 1.4rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 6px;
+            line-height: 1.8;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1rem;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            background: var(--bg-subtle);
+        }
+
+        .nav-btn.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title h1 {
+            font-family: var(--font-poetry);
+            font-size: 3.4rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
             font-weight: 700;
         }
 
-        .subtitle {
+        .hero-title p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            font-size: 1.05rem;
         }
 
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        /* Options Card */
+        .options-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .option-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .mode-toggle {
+            display: flex;
+            background: var(--bg-subtle);
+            padding: 0.25rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            padding: 0.35rem 0.85rem;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .mode-btn.active {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .select-input {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+            max-width: 320px;
+        }
+
+        .select-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Main Workspace Box */
+        .workspace-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out;
         }
 
-        .input-group {
+        /* Diacritics & Presets Bar */
+        .toolbar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-left: 0.25rem;
+        }
+
+        .dia-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .dia-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .preset-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 0.2rem 0.75rem;
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Poetry Textarea */
+        .textarea-wrapper {
             position: relative;
         }
 
         textarea {
             width: 100%;
-            min-height: 250px;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
+            min-height: 220px;
+            background: #FFFEFA;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            font-family: var(--font-poetry);
+            font-size: 1.75rem;
+            line-height: 2.3;
             color: var(--text-main);
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 1.8rem;
-            line-height: 2.2;
             resize: vertical;
-            transition: all 0.3s ease;
+            outline: none;
+            transition: border-color 0.2s;
         }
 
         textarea:focus {
-            outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(148, 54, 30, 0.1);
         }
 
-        .btn {
-            display: inline-flex;
+        /* Action Buttons Row */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hint-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .buttons-group {
+            display: flex;
             gap: 0.75rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        }
+
+        .btn-main {
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-family: 'Noto Sans Arabic', sans-serif;
+            padding: 0.65rem 1.8rem;
+            font-family: var(--font-ui);
+            font-size: 1.05rem;
             font-weight: 600;
-            border-radius: 0.5rem;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.4);
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(148, 54, 30, 0.2);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.65rem 1.2rem;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .btn i {
-            font-size: 1.1em;
+        .btn-secondary:hover {
+            border-color: var(--text-light);
+            color: var(--text-main);
         }
 
-        /* Results Section */
+        /* Loader */
+        .loader-container {
+            display: none;
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+
+        .spinner {
+            width: 42px;
+            height: 42px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Results Display */
         #results {
             display: none;
         }
 
-        .dominant-meter-banner {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(56, 189, 248, 0.2));
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 2.5rem;
+        /* Dominant Meter Overview Banner */
+        .meter-banner {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            display: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            position: relative;
         }
 
-        .dominant-meter-banner h2 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .dominant-meter-name {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 2.2rem;
+        .meter-banner-title {
+            font-family: var(--font-poetry);
+            font-size: 2.3rem;
             color: var(--text-main);
+            margin-bottom: 0.25rem;
+            font-weight: 700;
         }
 
+        .meter-banner-feet {
+            font-family: var(--font-ui);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .meter-banner-stats {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding: 0.4rem 1.2rem;
+            background: var(--bg-subtle);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .stats-badge-out {
+            color: var(--danger-text);
+            font-weight: 600;
+        }
+
+        .stats-badge-in {
+            color: var(--success-text);
+            font-weight: 600;
+        }
+
+        .banner-actions {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .banner-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.85rem;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .banner-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Line Scansion Card (Taqti.org Signature UI) */
         .line-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 2rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .line-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
         }
 
-        .line-header {
+        .line-top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.5rem;
         }
 
-        .meter-name {
-            color: var(--secondary);
-            font-size: 1.1rem;
-            font-weight: 600;
+        .line-verse-text {
+            font-family: var(--font-poetry);
+            font-size: 2.1rem;
+            color: var(--text-main);
+            line-height: 2;
         }
 
-        .distance-badge {
-            background: var(--surface-hover);
-            padding: 0.4rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .badge-group {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .dist-0 { color: var(--success); }
-        .dist-low { color: var(--warning); }
-        .dist-high { color: var(--accent); }
-
-        .scansion-grid {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .status-pill {
+            padding: 0.25rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
         }
 
-        .grid-row {
+        .status-pill.valid {
+            background: var(--success-bg);
+            color: var(--success-text);
+            border: 1px solid var(--success-border);
+        }
+
+        .status-pill.invalid {
+            background: var(--danger-bg);
+            color: var(--danger-text);
+            border: 1px solid var(--danger-border);
+        }
+
+        .line-sub-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .btn-audio {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            color: var(--primary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-audio:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* The Hierarchical Arkan & Syllable Grid */
+        .arkan-container {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.25rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+
+        .rukn-block {
+            flex: 1;
+            min-width: 140px;
+            border: 1px dashed var(--border-dashed);
+            border-radius: 8px;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            background: #FCFBF9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .syllables-row {
             display: flex;
             justify-content: space-around;
+            gap: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .syllable-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            flex: 1;
+        }
+
+        .syl-text {
+            font-family: var(--font-poetry);
+            font-size: 1.35rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .syl-weight {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-light);
+            background: #EFEAE3;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .syl-weight.long {
+            color: #2D2A26;
+        }
+
+        .syl-weight.short {
+            color: #7D7468;
+        }
+
+        .rukn-footer {
+            border-top: 1px solid #ECE4D8;
+            padding-top: 0.5rem;
+        }
+
+        .rukn-name {
+            font-family: var(--font-ui);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .rukn-num {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        /* Word Breakdown Row (Bottom Box) */
+        .words-container {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .word-pill-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
             text-align: center;
+            min-width: 65px;
+            flex: 1;
+        }
+
+        .word-pill-name {
+            font-family: var(--font-poetry);
+            font-size: 1.35rem;
+            color: var(--text-main);
+            margin-bottom: 0.15rem;
+        }
+
+        .word-pill-weight {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Diagnostic & Suggestion Alert (When Out of Meter) */
+        .diagnostic-card {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .diagnostic-header {
+            font-weight: 700;
+            color: var(--warning-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
         }
 
-        .grid-item {
-            flex: 1;
+        .diagnostic-item {
+            font-size: 0.9rem;
+            color: #5C3800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn-apply-fix {
+            background: #B25E00;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-apply-fix:hover {
+            background: #8F4C00;
+        }
+
+        /* Other Possible Meters Accordion */
+        .other-meters-section {
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.75rem;
+        }
+
+        .other-meters-header {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .other-meters-list {
+            margin-top: 0.5rem;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .feet-name {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            background: rgba(139, 92, 246, 0.1);
-            padding: 0.5rem;
-            border-radius: 0.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .word-text {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 1.8rem;
-            color: var(--text-main);
-        }
-
-        .code-text {
-            font-family: monospace;
-            font-size: 1.4rem;
-            color: var(--secondary);
-            letter-spacing: 2px;
-            background: rgba(0,0,0,0.3);
-            padding: 0.3rem 0;
-            border-radius: 0.3rem;
-        }
-
-        /* Loading Spinner */
-        .loader {
-            display: none;
-            width: 48px;
-            height: 48px;
-            border: 5px solid var(--border);
-            border-bottom-color: var(--primary);
-            border-radius: 50%;
-            margin: 3rem auto;
-            animation: rotation 1s linear infinite;
-        }
-
-        @keyframes rotation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .empty-state {
-            text-align: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            padding: 2rem;
         }
-        
-        .error-msg {
-            color: var(--accent);
-            text-align: center;
-            margin-top: 1rem;
+
+        .other-meter-item {
+            padding: 0.35rem 0.6rem;
+            background: var(--bg-subtle);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Modal styling (For Bayaz, History, Learn, About) */
+        .modal-overlay {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            background: transparent;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Audio playing animation */
+        .syl-playing {
+            animation: pulse-syl 0.3s ease-out;
+            background: var(--primary) !important;
+            color: white !important;
+        }
+
+        @keyframes pulse-syl {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title h1 { font-size: 2.6rem; }
+            .line-verse-text { font-size: 1.6rem; }
+            .options-card { flex-direction: column; align-items: stretch; }
+            .select-input { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span>تقطیع اب اور بھی جدید — 100 سے زائد بحور، تقطیع جدول، اعراب تجاویز اور آہنگ پلیئر کے ساتھ!</span>
+        <a href="#results">آزمائیں</a>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo-area">
+                <span class="logo-badge">تقطیع</span>
+                <span class="logo-text">PyAruuz</span>
+            </a>
+            <nav class="nav-tabs">
+                <button class="nav-btn active" onclick="switchNav('taqti')">تقطیع</button>
+                <button class="nav-btn" onclick="openModal('bayaz')">بیاض <span id="bayaz-count" style="font-size: 0.8rem; opacity: 0.8;">(0)</span></button>
+                <button class="nav-btn" onclick="openModal('history')">تاریخ</button>
+                <button class="nav-btn" onclick="openModal('learn')">سیکھیں</button>
+                <button class="nav-btn" onclick="openModal('about')">تعارف</button>
+            </nav>
+        </div>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>عروض</h1>
-            <p class="subtitle">جدید اور تیز ترین اردو تقطیع انجن</p>
-        </header>
+        <!-- Hero Header -->
+        <div class="hero-title">
+            <h1>تقطیع</h1>
+            <p>اردو شاعری کا وزن جانچیں — مصرعے لکھیں، بحر پہچانیں، تقطیع دیکھیں</p>
+        </div>
 
-        <main>
-            <div class="glass-panel">
-                <div class="input-group">
-                    <textarea id="ghazal-input" placeholder="اپنی غزل یہاں پیسٹ کریں...&#10;&#10;مثال کے طور پر:&#10;ٹھیک ہے میں نہیں پسند اُنہیں&#10;لیکن اس درجہ پائمال پسند" spellcheck="false"></textarea>
+        <!-- Options Card -->
+        <div class="options-card">
+            <!-- Mode Toggle -->
+            <div class="option-group">
+                <span class="option-label">کیا جانچنا ہے؟</span>
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="mode-ghazal-btn" onclick="setMode('ghazal')">غزل / اشعار</button>
+                    <button class="mode-btn" id="mode-nazm-btn" onclick="setMode('nazm')">نظم (ہر مصرع الگ)</button>
                 </div>
-                <button class="btn" id="scan-btn" onclick="scanPoem()">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    تقطیع کریں
-                </button>
-                <div id="error-message" class="error-msg"></div>
             </div>
 
-            <div class="loader" id="loader"></div>
-
-            <div id="results">
-                <div class="dominant-meter-banner" id="dominant-meter-banner">
-                    <h2>غزل کی بحر</h2>
-                    <div class="dominant-meter-name" id="dominant-meter-name"></div>
-                </div>
-                
-                <div id="lines-container"></div>
+            <!-- Bahr Dropdown -->
+            <div class="option-group">
+                <span class="option-label">بحر:</span>
+                <select id="meter-select" class="select-input">
+                    <option value="خودکار">خودکار (بحر خود پہچانیں)</option>
+                </select>
             </div>
-        </main>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="workspace-card">
+            <!-- Toolbars Row: Diacritics & Presets -->
+            <div class="toolbar-row">
+                <!-- Diacritics Group -->
+                <div class="toolbar-group">
+                    <span class="toolbar-title">اعراب لگائیں:</span>
+                    <button class="dia-btn" title="زبر" onclick="insertChar('َ')">◌َ</button>
+                    <button class="dia-btn" title="زیر" onclick="insertChar('ِ')">◌ِ</button>
+                    <button class="dia-btn" title="پیش" onclick="insertChar('ُ')">◌ُ</button>
+                    <button class="dia-btn" title="جزم" onclick="insertChar('ْ')">◌ْ</button>
+                    <button class="dia-btn" title="تشدید" onclick="insertChar('ّ')">◌ّ</button>
+                    <button class="dia-btn" title="ہمزہ اضافت" onclick="insertChar('ۂ')">ۂ</button>
+                    <button class="dia-btn" title="کھڑا زبر" onclick="insertChar('ٰ')">◌ٰ</button>
+                </div>
+
+                <!-- Presets Group -->
+                <div class="toolbar-group">
+                    <span class="toolbar-title">مثالیں:</span>
+                    <button class="preset-btn" onclick="loadPreset('dagh')">داغؔ</button>
+                    <button class="preset-btn" onclick="loadPreset('ghalib')">غالبؔ</button>
+                    <button class="preset-btn" onclick="loadPreset('iqbal')">اقبالؔ</button>
+                    <button class="preset-btn" onclick="loadPreset('faiz')">فیضؔ</button>
+                    <button class="preset-btn" onclick="loadPreset('invalid')">خارج از وزن</button>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="textarea-wrapper">
+                <textarea id="poetry-input" placeholder="اپنی غزل یا اشعار یہاں لکھیں یا پیسٹ کریں...&#10;&#10;مثال:&#10;خاطر سے یا لحاظ سے میں مان تو گیا&#10;جھوٹی قسم سے آپ کا ایمان تو گیا" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Actions Row -->
+            <div class="actions-row">
+                <span class="hint-text">اضافت پر زیر (دلِ ناداں) اور تشدید (محبّت) لگا دیں تو نتیجہ زیادہ درست ہوگا۔</span>
+                <div class="buttons-group">
+                    <button class="btn-secondary" onclick="clearInput()">صاف کریں</button>
+                    <button class="btn-secondary" onclick="saveToBayaz()"><i class="fa-regular fa-bookmark"></i> بیاض میں محفوظ کریں</button>
+                    <button class="btn-main" id="scan-btn" onclick="runScansion()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> تقطیع کریں
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader-container" id="loader">
+            <div class="spinner"></div>
+            <p style="color: var(--text-muted); font-weight: 500;">تقطیع کی جا رہی ہے، براہِ کرم انتظار فرمائیں...</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results">
+            <!-- Dominant Meter Banner -->
+            <div class="meter-banner" id="meter-banner">
+                <div class="meter-banner-title" id="banner-meter-name">بحر مضارع مثمن اخرب مکفوف محذوف</div>
+                <div class="meter-banner-feet" id="banner-feet-names">مَفْعُولُ فاعِلاتُ مَفاعِیلُ فاعِلُن</div>
+                <div class="meter-banner-stats">
+                    <span>کل مصرعے: <strong id="stat-total">0</strong></span>
+                    <span class="stats-badge-in">وزن میں: <strong id="stat-in">0</strong></span>
+                    <span class="stats-badge-out" id="stat-out-container">خارج از وزن: <strong id="stat-out">0</strong></span>
+                </div>
+                <div class="banner-actions">
+                    <button class="banner-btn" onclick="copyFullText()"><i class="fa-regular fa-copy"></i> کلام کاپی کریں</button>
+                    <button class="banner-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> پرنٹ / PDF</button>
+                </div>
+            </div>
+
+            <!-- Individual Line Cards Container -->
+            <div id="lines-container"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: بیاض (Notebook) -->
+    <div class="modal-overlay" id="modal-bayaz">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('bayaz')">&times;</button>
+            <h3 class="modal-title"><i class="fa-solid fa-book-bookmark"></i> بیاض (محفوظ کلام)</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">یہاں آپ کے محفوظ کردہ اشعار موجود ہیں جو آپ کے براؤزر میں محفوظ رہتے ہیں۔</p>
+            <div id="bayaz-list" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: تاریخ (History) -->
+    <div class="modal-overlay" id="modal-history">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('history')">&times;</button>
+            <h3 class="modal-title"><i class="fa-solid fa-clock-rotate-left"></i> تاریخچہ</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">حالیہ تقطیع کیے گئے اشعار کی فہرست۔</p>
+            <div id="history-list" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: سیکھیں (Learn Guide) -->
+    <div class="modal-overlay" id="modal-learn">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('learn')">&times;</button>
+            <h3 class="modal-title"><i class="fa-solid fa-graduation-cap"></i> علمِ عروض کے اصول</h3>
+            <div style="font-size: 0.95rem; line-height: 1.8; color: var(--text-main);">
+                <p><strong>۱۔ ہجا اور اوزان (1 اور 2):</strong></p>
+                <p>• <strong>1 (خفیف ہجا):</strong> وہ حرف جو اکیلا متحرک ہو، جیسے 'دِ'، 'تُ'، 'کَ'۔</p>
+                <p>• <strong>2 (طویل ہجا):</strong> وہ حرف جو دو آوازوں پر مشتمل ہو (حرفِ علت کے ساتھ یا ساکن حرف کے ساتھ)، جیسے 'دل'، 'جا'، 'ہو'۔</p>
+                <br>
+                <p><strong>۲۔ حرفِ عطف (و):</strong> جب دو الفاظ کے درمیان 'و' آئے (جیسے لوح و قلم)، تو 'و' پچھلے لفظ کے ساتھ مل کر 'لوحو' بن جاتا ہے۔</p>
+                <br>
+                <p><strong>۳۔ اضافت (ِ):</strong> اضافت کی صورت میں آخری حرف کے نیچے زیر لگائی جاتی ہے جس سے ایک خفیف ہجا (1) کا اضافہ ہوتا ہے۔</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: تعارف (About) -->
+    <div class="modal-overlay" id="modal-about">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('about')">&times;</button>
+            <h3 class="modal-title"><i class="fa-solid fa-circle-info"></i> تعارف — PyAruuz</h3>
+            <div style="font-size: 0.95rem; line-height: 1.8; color: var(--text-main);">
+                <p><strong>PyAruuz</strong> اردو شاعری کا جدید ترین اور تیز رفتار تقطیع انجن ہے جو 100 سے زائد کلاسیکی بحور، پیچیدہ قواعد (عطف، اضافت، نون غنہ) اور ارکان کی دقیق ریاضیاتی پیمائش کو مکمل درستگی کے ساتھ جانچتا ہے۔</p>
+                <br>
+                <p>ڈویلپر: <strong>سید ذیشان (بنیادی الگورتھم) اور واجد قیوم (Python Port & UI)</strong></p>
+            </div>
+        </div>
     </div>
 
     <script>
-        async function scanPoem() {
-            const text = document.getElementById('ghazal-input').value.trim();
-            const btn = document.getElementById('scan-btn');
-            const loader = document.getElementById('loader');
-            const resultsDiv = document.getElementById('results');
-            const linesContainer = document.getElementById('lines-container');
-            const errorMsg = document.getElementById('error-message');
-            const banner = document.getElementById('dominant-meter-banner');
-            const bannerName = document.getElementById('dominant-meter-name');
+        let currentMode = 'ghazal';
+        let audioCtx = null;
 
+        // Initialize Meters Dropdown
+        async function loadMeters() {
+            try {
+                const res = await fetch('/meters');
+                if (res.ok) {
+                    const meters = await res.json();
+                    const select = document.getElementById('meter-select');
+                    meters.forEach(m => {
+                        const opt = document.createElement('option');
+                        opt.value = m.name;
+                        opt.textContent = `بحر ${m.name} — ${m.feet}`;
+                        select.appendChild(opt);
+                    });
+                }
+            } catch (e) {
+                console.error("Could not load meters list", e);
+            }
+        }
+
+        // Mode Switching
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('mode-ghazal-btn').classList.toggle('active', mode === 'ghazal');
+            document.getElementById('mode-nazm-btn').classList.toggle('active', mode === 'nazm');
+        }
+
+        // Insert Diacritic Character at cursor
+        function insertChar(ch) {
+            const textarea = document.getElementById('poetry-input');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            textarea.value = text.substring(0, start) + ch + text.substring(end);
+            textarea.selectionStart = textarea.selectionEnd = start + ch.length;
+            textarea.focus();
+        }
+
+        // Clear input
+        function clearInput() {
+            document.getElementById('poetry-input').value = '';
+            document.getElementById('results').style.display = 'none';
+        }
+
+        // Presets
+        const presets = {
+            dagh: "خاطر سے یا لحاظ سے میں مان تو گیا\nجھوٹی قسم سے آپ کا ایمان تو گیا\nدل لے کے مفت کہتے ہیں کچھ کام کا نہیں\nالٹی شکایتیں ہوئیں احسان تو گیا",
+            ghalib: "دلِ ناداں تجھے ہوا کیا ہے\nآخر اس درد کی دوا کیا ہے\nہم ہیں مشتاق اور وہ بیزار\nیا الٰہی یہ ماجرا کیا ہے",
+            iqbal: "کی محمد سے وفا تو نے تو ہم تیرے ہیں\nیہ جہاں چیز ہے کیا لوح و قلم تیرے ہیں",
+            faiz: "مجھ سے پہلی سی محبت مرے محبوب نہ مانگ\nمیں نے سمجھا تھا کہ تو ہے تو درخشاں ہے حیات",
+            invalid: "خاطر سے یا لحاظ سے میں مان تو گیا\nڈرتا ہوں دیکھ کر دل بے آرزو کو میں"
+        };
+
+        function loadPreset(key) {
+            if (presets[key]) {
+                document.getElementById('poetry-input').value = presets[key];
+                runScansion();
+            }
+        }
+
+        // Scansion Engine Trigger
+        async function runScansion() {
+            const text = document.getElementById('poetry-input').value.trim();
             if (!text) {
-                errorMsg.innerText = "براہ کرم کچھ متن درج کریں۔";
-                errorMsg.style.display = "block";
+                alert("براہِ کرم کچھ اشعار درج فرمائیں۔");
                 return;
             }
 
-            errorMsg.style.display = "none";
-            btn.disabled = true;
-            btn.style.opacity = "0.7";
-            resultsDiv.style.display = "none";
-            loader.style.display = "block";
+            const meter = document.getElementById('meter-select').value;
+            const loader = document.getElementById('loader');
+            const resultsDiv = document.getElementById('results');
+            const linesContainer = document.getElementById('lines-container');
+            const scanBtn = document.getElementById('scan-btn');
+
+            loader.style.display = 'block';
+            resultsDiv.style.display = 'none';
             linesContainer.innerHTML = '';
+            scanBtn.disabled = true;
+
+            // Save to history
+            saveToHistory(text);
 
             try {
-                const response = await fetch('/scan', {
+                const res = await fetch('/scan', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text })
+                    body: JSON.stringify({
+                        text: text,
+                        meter: meter,
+                        mode: currentMode
+                    })
                 });
 
-                const data = await response.json();
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "نامعلوم خامی");
 
-                if (response.ok) {
-                    if(data.dominant_meter) {
-                        bannerName.innerText = data.dominant_meter;
-                        banner.style.display = "block";
-                    } else {
-                        banner.style.display = "none";
-                    }
+                renderResults(data);
+                resultsDiv.style.display = 'block';
+                resultsDiv.scrollIntoView({ behavior: 'smooth' });
 
-                    if (data.lines && data.lines.length > 0) {
-                        data.lines.forEach((line, index) => {
-                            linesContainer.appendChild(createLineCard(line));
-                        });
-                        resultsDiv.style.display = "block";
-                        resultsDiv.style.animation = "fadeInUp 0.8s ease-out";
-                    } else {
-                        linesContainer.innerHTML = '<div class="empty-state">کوئی نتیجہ نہیں ملا۔</div>';
-                        resultsDiv.style.display = "block";
-                    }
-                } else {
-                    throw new Error(data.error || "نامعلوم خامی");
-                }
             } catch (err) {
-                errorMsg.innerText = "خامی: " + err.message;
-                errorMsg.style.display = "block";
+                alert("خامی: " + err.message);
             } finally {
-                btn.disabled = false;
-                btn.style.opacity = "1";
-                loader.style.display = "none";
+                loader.style.display = 'none';
+                scanBtn.disabled = false;
             }
         }
 
-        function createLineCard(lineData) {
+        // Render Results Card
+        function renderResults(data) {
+            // Dominant Banner
+            document.getElementById('banner-meter-name').textContent = `بحر ${data.dominant_meter}`;
+            document.getElementById('banner-feet-names').textContent = data.dominant_feet_names.join(' ');
+            
+            document.getElementById('stat-total').textContent = data.stats.total;
+            document.getElementById('stat-in').textContent = data.stats.in_meter;
+            document.getElementById('stat-out').textContent = data.stats.out_meter;
+            
+            const outContainer = document.getElementById('stat-out-container');
+            outContainer.style.display = data.stats.out_meter > 0 ? 'inline' : 'none';
+
+            const container = document.getElementById('lines-container');
+            container.innerHTML = '';
+
+            data.lines.forEach((lineData, idx) => {
+                container.appendChild(createLineCard(lineData, idx));
+            });
+        }
+
+        // Build individual Line Card (Taqti.org layout)
+        function createLineCard(lineData, lineIndex) {
             const card = document.createElement('div');
             card.className = 'line-card';
-            
-            // Format distance badge
-            let distClass = 'dist-high';
-            let icon = 'fa-triangle-exclamation';
-            if (lineData.distance === 0) {
-                distClass = 'dist-0';
-                icon = 'fa-check-circle';
-            } else if (lineData.distance <= 2) {
-                distClass = 'dist-low';
-                icon = 'fa-info-circle';
-            }
-            
-            // Build the top header
-            card.innerHTML = `
-                <div class="line-header">
-                    <div class="meter-name">${lineData.meter_name || "نامعلوم بحر"}</div>
-                    <div class="distance-badge ${distClass}">
-                        <i class="fa-solid ${icon}"></i>
-                        فاصلہ: ${lineData.distance == 99 ? '∞' : lineData.distance}
+            card.id = `line-card-${lineIndex}`;
+
+            const statusClass = lineData.is_in_meter ? 'valid' : 'invalid';
+            const statusIcon = lineData.is_in_meter ? 'fa-check' : 'fa-xmark';
+            const statusText = lineData.is_in_meter ? 'وزن میں ہے' : 'خارج از وزن';
+
+            // 1. Top Bar
+            let html = `
+                <div class="line-top-bar">
+                    <div class="line-verse-text">${escapeHtml(lineData.line)}</div>
+                    <div class="badge-group">
+                        <span class="status-pill ${statusClass}">
+                            <i class="fa-solid ${statusIcon}"></i> ${statusText}
+                        </span>
                     </div>
                 </div>
+                
+                <div class="line-sub-meta">
+                    <div><strong>بحر ${lineData.meter_name}</strong> — ${lineData.feet_names.join(' ')}</div>
+                    <button class="btn-audio" onclick="playRhythm('${lineData.matched_code}', ${lineIndex})">
+                        <i class="fa-solid fa-play"></i> ♪ آہنگ سنیں
+                    </button>
+                </div>
             `;
-            
-            // Build the grid
-            // C# style:
-            // 1. Feet names
-            // 2. Words
-            // 3. Codes
-            
-            const grid = document.createElement('div');
-            grid.className = 'scansion-grid';
-            
-            // Row 1: Feet Names
-            if (lineData.feet_names && lineData.feet_names.length > 0) {
-                const feetRow = document.createElement('div');
-                feetRow.className = 'grid-row';
-                lineData.feet_names.forEach(f => {
-                    feetRow.innerHTML += `<div class="grid-item"><div class="feet-name">${f}</div></div>`;
+
+            // 2. Arkan Box (Hierarchical Columns)
+            html += `<div class="arkan-container" id="arkan-row-${lineIndex}">`;
+            lineData.arkan.forEach((rukn, rIdx) => {
+                html += `
+                    <div class="rukn-block">
+                        <div class="syllables-row">
+                `;
+                rukn.syllables.forEach((syl, sIdx) => {
+                    const weightClass = syl.weight === '2' ? 'long' : 'short';
+                    html += `
+                        <div class="syllable-col" id="syl-cell-${lineIndex}-${rIdx}-${sIdx}">
+                            <span class="syl-text">${escapeHtml(syl.text)}</span>
+                            <span class="syl-weight ${weightClass}">${syl.weight}</span>
+                        </div>
+                    `;
                 });
-                grid.appendChild(feetRow);
-            }
-            
-            // Row 2 & 3: Words mapped to Codes
-            // Since we might have more words than feet (or vice versa), 
-            // for the C# exact look, we just display them aligned if possible, 
-            // otherwise evenly spaced.
-            const wordRow = document.createElement('div');
-            wordRow.className = 'grid-row';
-            
-            // We'll reverse the array for display because it's RTL but flex row might render LTR depending on browser flex logic with RTL
-            // Actually, CSS flex with RTL naturally flows right to left.
-            
-            lineData.words.forEach((w, i) => {
-                const c = lineData.codes[i] || "?";
-                wordRow.innerHTML += `
-                    <div class="grid-item">
-                        <div class="word-text">${w}</div>
-                        <div class="code-text">${c}</div>
+                html += `
+                        </div>
+                        <div class="rukn-footer">
+                            <div class="rukn-name">${escapeHtml(rukn.name)}</div>
+                            <div class="rukn-num">${rukn.weight_num}</div>
+                        </div>
                     </div>
                 `;
             });
-            
-            grid.appendChild(wordRow);
-            card.appendChild(grid);
-            
+            html += `</div>`;
+
+            // 3. Word-Level Row
+            html += `<div class="words-container">`;
+            lineData.words_breakdown.forEach(w => {
+                html += `
+                    <div class="word-pill-box">
+                        <div class="word-pill-name">${escapeHtml(w.word)}</div>
+                        <div class="word-pill-weight">${w.weight_num}</div>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+
+            // 4. Diagnostic Suggestions (if Out of Meter)
+            if (lineData.suggestions && lineData.suggestions.length > 0) {
+                html += `
+                    <div class="diagnostic-card">
+                        <div class="diagnostic-header">
+                            <i class="fa-solid fa-lightbulb"></i> تجاویز — یہ ترمیمیں مصرعے کو بحر میں لے آتی ہیں:
+                        </div>
+                `;
+                lineData.suggestions.forEach(sug => {
+                    html += `
+                        <div class="diagnostic-item">
+                            <span><strong>${escapeHtml(sug.title)}:</strong> ${escapeHtml(sug.desc)}</span>
+                            ${sug.fixed_line ? `<button class="btn-apply-fix" onclick="applySuggestion('${escapeHtml(lineData.line)}', '${escapeHtml(sug.fixed_line)}')">یہ ترمیم لگائیں</button>` : ''}
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            // 5. Other Meters Accordion
+            if (lineData.other_meters && lineData.other_meters.length > 0) {
+                html += `
+                    <div class="other-meters-section">
+                        <div class="other-meters-header" onclick="toggleAccordion('other-m-${lineIndex}')">
+                            <i class="fa-solid fa-chevron-down"></i> دیگر ممکنہ بحریں (${lineData.other_meters.length})
+                        </div>
+                        <div class="other-meters-list" id="other-m-${lineIndex}" style="display: none;">
+                `;
+                lineData.other_meters.forEach(om => {
+                    html += `
+                        <div class="other-meter-item">
+                            <span>بحر ${om.meter_name} — ${om.feet_names.join(' ')}</span>
+                            <span>فاصلہ: ${om.distance}</span>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+            }
+
+            card.innerHTML = html;
             return card;
         }
+
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        // Apply Suggestion directly to textarea
+        function applySuggestion(oldLine, newLine) {
+            const textarea = document.getElementById('poetry-input');
+            textarea.value = textarea.value.replace(oldLine, newLine);
+            runScansion();
+        }
+
+        // Web Audio API Rhythmic Cadence Player ("♪ آہنگ سنیں")
+        function playRhythm(code, lineIndex) {
+            if (!window.AudioContext && !window.webkitAudioContext) return;
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const pattern = code.replace(/[^=\-x]/g, '');
+            let time = audioCtx.currentTime + 0.05;
+
+            for (let i = 0; i < pattern.length; i++) {
+                const char = pattern[i];
+                const isLong = (char === '=' || char === 'x');
+                const duration = isLong ? 0.35 : 0.18;
+                const freq = isLong ? 95 : 190;
+
+                // Create Oscillator (Drum sound simulation)
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = isLong ? 'triangle' : 'sine';
+                osc.frequency.setValueAtTime(freq, time);
+                osc.frequency.exponentialRampToValueAtTime(30, time + duration);
+
+                gain.gain.setValueAtTime(isLong ? 0.8 : 0.5, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(time);
+                osc.stop(time + duration);
+
+                time += duration + 0.08;
+            }
+        }
+
+        // Bayaz (Saved Notebook) functions
+        function saveToBayaz() {
+            const text = document.getElementById('poetry-input').value.trim();
+            if (!text) return;
+            const items = JSON.parse(localStorage.getItem('pyaruuz_bayaz') || '[]');
+            items.unshift({ text, date: new Date().toLocaleDateString('ur-PK') });
+            localStorage.setItem('pyaruuz_bayaz', JSON.stringify(items));
+            updateBayazCount();
+            alert("کلام بیاض میں محفوظ کر لیا گیا ہے!");
+        }
+
+        function updateBayazCount() {
+            const items = JSON.parse(localStorage.getItem('pyaruuz_bayaz') || '[]');
+            document.getElementById('bayaz-count').textContent = `(${items.length})`;
+        }
+
+        function renderBayazList() {
+            const container = document.getElementById('bayaz-list');
+            const items = JSON.parse(localStorage.getItem('pyaruuz_bayaz') || '[]');
+            if (items.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-light); text-align: center;">بیاض خالی ہے۔</p>';
+                return;
+            }
+            container.innerHTML = '';
+            items.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.style.cssText = "background: var(--bg-subtle); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);";
+                div.innerHTML = `
+                    <div style="font-family: var(--font-poetry); font-size: 1.35rem; line-height: 2; margin-bottom: 0.5rem;">${escapeHtml(item.text).replace(/\n/g, '<br>')}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.8rem; color: var(--text-light);">${item.date}</span>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn-apply-fix" onclick="loadFromBayaz(${idx})">لوڈ کریں</button>
+                            <button class="btn-secondary" style="padding: 0.2rem 0.6rem; font-size: 0.8rem;" onclick="deleteFromBayaz(${idx})">حذف</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function loadFromBayaz(idx) {
+            const items = JSON.parse(localStorage.getItem('pyaruuz_bayaz') || '[]');
+            if (items[idx]) {
+                document.getElementById('poetry-input').value = items[idx].text;
+                closeModal('bayaz');
+                runScansion();
+            }
+        }
+
+        function deleteFromBayaz(idx) {
+            const items = JSON.parse(localStorage.getItem('pyaruuz_bayaz') || '[]');
+            items.splice(idx, 1);
+            localStorage.setItem('pyaruuz_bayaz', JSON.stringify(items));
+            updateBayazCount();
+            renderBayazList();
+        }
+
+        // History functions
+        function saveToHistory(text) {
+            const hist = JSON.parse(localStorage.getItem('pyaruuz_history') || '[]');
+            hist.unshift({ text, date: new Date().toLocaleTimeString('ur-PK') });
+            if (hist.length > 15) hist.pop();
+            localStorage.setItem('pyaruuz_history', JSON.stringify(hist));
+        }
+
+        function renderHistoryList() {
+            const container = document.getElementById('history-list');
+            const items = JSON.parse(localStorage.getItem('pyaruuz_history') || '[]');
+            if (items.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-light); text-align: center;">کوئی تاریخ موجود نہیں۔</p>';
+                return;
+            }
+            container.innerHTML = '';
+            items.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.style.cssText = "background: var(--bg-subtle); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;";
+                div.innerHTML = `
+                    <div style="font-family: var(--font-poetry); font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 400px;">${escapeHtml(item.text.split('\n')[0])}</div>
+                    <button class="btn-apply-fix" onclick="document.getElementById('poetry-input').value = \`${escapeHtml(item.text)}\`; closeModal('history'); runScansion();">دوبارہ جانچیں</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            if (id === 'bayaz') renderBayazList();
+            if (id === 'history') renderHistoryList();
+            document.getElementById(`modal-${id}`).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(`modal-${id}`).style.display = 'none';
+        }
+
+        function copyFullText() {
+            const text = document.getElementById('poetry-input').value;
+            navigator.clipboard.writeText(text);
+            alert("کلام کاپی کر لیا گیا ہے!");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        // Init on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMeters();
+            updateBayazCount();
+        });
     </script>
 </body>
 </html>
